@@ -37,3 +37,19 @@ function removeBook(index) {
   localStorage.setItem('collections', JSON.stringify(collections));
   render();
 }
+
+AddBookForm.addEventListener('submit', (e) => {
+  e.preventDefault();
+
+  const book = {
+    title: bookTitle.value,
+    author: bookAuthor.value,
+  };
+  collections.push(book);
+  localStorage.setItem('collections', JSON.stringify(collections));
+  bookTitle.value = '';
+  bookAuthor.value = '';
+  render();
+});
+
+window.onload = render();
