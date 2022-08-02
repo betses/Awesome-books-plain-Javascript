@@ -1,25 +1,36 @@
-const collections = JSON.parse(localStorage.getItem('collections')) || [];
+// const collections = JSON.parse(localStorage.getItem('collections')) || [];
 const bookContainer = document.querySelector('.table');
 const AddBookForm = document.querySelector('.book-form');
 const bookTitle = document.getElementById('title');
 const bookAuthor = document.getElementById('author');
-
 
 class ViewBook {
   constructor(book) {
     this.book = book;
   }
 
+  static getBooks() {
+    let collections;
+    if (localStorage.getItem('collections') === null) {
+      collections = [];
+    } else {
+      collections = JSON.parse(localStorage.getItem('collections'));
+    }
+
+    return collections;
+  }
+
   addBook = () => {
-    collections.push(this.book);
-    const myBook = collections;
-    localStorage.setItem('collections', JSON.stringify(myBook));
+    const myBooks = ViewBook.getBooks();
+    myBooks.push(myBooks);
+    localStorage.setItem('myBooks', JSON.stringify(myBooks));
     this.render();
   }
 
   render= () => {
+    const myBooks = ViewBook.getBooks();
     bookContainer.innerHTML = '';
-    collections.forEach((book, index) => {
+    myBooks.forEach((book, index) => {
       const bookElement = document.createElement('tr');
       bookElement.classList.add('book');
       bookElement.innerHTML = `
@@ -37,8 +48,9 @@ class ViewBook {
   }
 
    removeBook = (index) => {
-     collections.splice(index, 1);
-     localStorage.setItem('collections', JSON.stringify(collections));
+     const myBooks = ViewBook.getBooks();
+     myBooks.splice(index, 1);
+     localStorage.setItem('collections', JSON.stringify(myBooks));
      this.render();
    }
 }
