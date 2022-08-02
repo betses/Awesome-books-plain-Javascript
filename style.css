@@ -1,9 +1,90 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@100;300;700&display=swap");
+
 * {
-  padding: 0;
   margin: 0;
+  padding: 0;
   box-sizing: border-box;
 }
 
 body {
-  margin: 30px 0 0 30px;
+  font-family: "Lato", sans-serif;
+}
+
+.body-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: auto;
+}
+
+.book-container {
+  border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 90%;
+  padding: 20px;
+  margin: 30px 0;
+}
+
+.odd-book {
+  display: flex;
+  gap: 20px;
+  justify-content: space-between;
+  background-color: gray;
+  padding: 20px;
+  align-items: center;
+}
+
+.odd-book p {
+  font-weight: 700;
+}
+
+.book {
+  display: flex;
+  gap: 20px;
+  justify-content: space-between;
+  padding: 20px;
+  align-items: center;
+}
+
+.book p {
+  font-weight: 700;
+}
+
+.delete {
+  display: flex;
+  justify-content: end;
+  padding: 10px 30px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+}
+
+.form-group input {
+  width: 350px;
+  padding: 10px;
+}
+
+.add-button {
+  margin-left: 18rem;
+  padding: 10px 15px;
+  font-weight: 300;
+}
+
+.empty {
+  text-align: center;
+}
+
+.error {
+  color: red;
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin: 10px 0;
 }
