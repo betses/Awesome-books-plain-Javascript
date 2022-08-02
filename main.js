@@ -40,6 +40,9 @@ class Book {
 
   render() {
     bookContainer.innerHTML = '';
+    if (collections.getBooks().length === 0) {
+      bookContainer.innerHTML = '<p class="empty">No books in your collection</p>';
+    }
     collections.getBooks().forEach((book, index) => {
       const bookElement = document.createElement('div');
       if (index % 2 === 0) {
@@ -48,8 +51,7 @@ class Book {
         bookElement.classList.add('book');
       }
       bookElement.innerHTML = `
-          <p>${book.title}</p>
-          <p>${book.author}</p>
+          <p>"${book.title}" by ${book.author}</p>
           <button data-remove=${index} class='delete'>Remove</button>
         `;
       bookContainer.appendChild(bookElement);
@@ -80,6 +82,7 @@ AddBookForm.addEventListener('submit', (e) => {
     const books = new Book(title, author);
     books.addBook();
     bookTitle.value = '';
+    bookTitle.focus();
     bookAuthor.value = '';
     error.innerHTML = '';
   }
