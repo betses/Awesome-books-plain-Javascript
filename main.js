@@ -1,36 +1,47 @@
 // const collections = JSON.parse(localStorage.getItem('collections')) || [];
+// eslint-disable-next-line max-classes-per-file
 const bookContainer = document.querySelector('.table');
 const AddBookForm = document.querySelector('.book-form');
 const bookTitle = document.getElementById('title');
 const bookAuthor = document.getElementById('author');
+const error = document.querySelector('.error');
 
-class ViewBook {
-  constructor(book) {
-    this.book = book;
+class Collections {
+  constructor() {
+    this.collections = JSON.parse(localStorage.getItem('collections')) || [];
   }
 
-  static getBooks() {
-    let collections;
-    if (localStorage.getItem('collections') === null) {
-      collections = [];
-    } else {
-      collections = JSON.parse(localStorage.getItem('collections'));
-    }
-
-    return collections;
+  addBook(book) {
+    this.collections.push(book);
+    localStorage.setItem('collections', JSON.stringify(this.collections));
   }
 
-  addBook = () => {
-    const myBooks = ViewBook.getBooks();
-    myBooks.push(myBooks);
-    localStorage.setItem('myBooks', JSON.stringify(myBooks));
+  removeBook(index) {
+    this.collections.splice(this.collections[index], 1);
+  }
+
+  getBooks() {
+    return this.collections;
+  }
+}
+
+const collections = new Collections();
+
+class Book {
+  constructor(title, author) {
+    this.title = title;
+    this.author = author;
+  }
+
+  addBook() {
+    collections.addBook(this);
     this.render();
   }
 
-  render= () => {
-    const myBooks = ViewBook.getBooks();
+  render() {
     bookContainer.innerHTML = '';
-    myBooks.forEach((book, index) => {
+
+    collections.getBooks().forEach((book, index) => {
       const bookElement = document.createElement('tr');
       bookElement.classList.add('book');
       bookElement.innerHTML = `
@@ -47,26 +58,27 @@ class ViewBook {
     });
   }
 
-   removeBook = (index) => {
-     const myBooks = ViewBook.getBooks();
-     myBooks.splice(index, 1);
-     localStorage.setItem('collections', JSON.stringify(myBooks));
-     this.render();
-   }
+  removeBook(index) {
+    collections.removeBook(index);
+    localStorage.setItem('collections', JSON.stringify(collections.getBooks()));
+    this.render();
+  }
 }
 
-const books = new ViewBook();
+const books = new Book();
 
 AddBookForm.addEventListener('submit', (e) => {
   e.preventDefault();
-
-  const book = {
-    title: bookTitle.value,
-    author: bookAuthor.value,
-  };
-  const books = new ViewBook(book);
-  books.addBook();
-  bookTitle.value = '';
-  bookAuthor.value = '';
+  const title = bookTitle.value;
+  const author = bookAuthor.value;
+  if (title === '' || author === '') {
+    error.innerHTML = 'Please fill in all fields';
+  } else {
+    const books = new Book(title, author);
+    books.addBook();
+    bookTitle.value = '';
+    bookAuthor.value = '';
+    error.innerHTML = '';
+  }
 });
 window.onload = books.render();
