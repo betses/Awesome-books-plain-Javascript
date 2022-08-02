@@ -1,0 +1,30 @@
+.book-container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+table {
+  border-collapse: collapse;
+  width: 30%;
+}
+td {
+  border: 1px solid black;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even){
+  background-color: gray;
+}
+
+.table-button {
+  text-align: end ;
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 10%;
+}
