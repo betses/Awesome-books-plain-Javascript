@@ -1,6 +1,6 @@
 // const collections = JSON.parse(localStorage.getItem('collections')) || [];
 // eslint-disable-next-line max-classes-per-file
-const bookContainer = document.querySelector('.table');
+const bookContainer = document.querySelector('.book-container');
 const AddBookForm = document.querySelector('.book-form');
 const bookTitle = document.getElementById('title');
 const bookAuthor = document.getElementById('author');
@@ -40,14 +40,17 @@ class Book {
 
   render() {
     bookContainer.innerHTML = '';
-
     collections.getBooks().forEach((book, index) => {
-      const bookElement = document.createElement('tr');
-      bookElement.classList.add('book');
+      const bookElement = document.createElement('div');
+      if (index % 2 === 0) {
+        bookElement.classList.add('odd-book');
+      } else {
+        bookElement.classList.add('book');
+      }
       bookElement.innerHTML = `
-          <td>${book.title}</td>
-          <td>${book.author}</td>
-          <td><button data-remove=${index} class='delete'>Remove</button></td>
+          <p>${book.title}</p>
+          <p>${book.author}</p>
+          <button data-remove=${index} class='delete'>Remove</button>
         `;
       bookContainer.appendChild(bookElement);
 
