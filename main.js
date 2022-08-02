@@ -1,4 +1,3 @@
-// const collections = JSON.parse(localStorage.getItem('collections')) || [];
 // eslint-disable-next-line max-classes-per-file
 const bookContainer = document.querySelector('.book-container');
 const AddBookForm = document.querySelector('.book-form');
