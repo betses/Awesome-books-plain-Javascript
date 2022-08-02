@@ -48,8 +48,7 @@ class Book {
         bookElement.classList.add('book');
       }
       bookElement.innerHTML = `
-          <p>${book.title}</p>
-          <p>${book.author}</p>
+          <p>"${book.title}" by ${book.author}</p>
           <button data-remove=${index} class='delete'>Remove</button>
         `;
       bookContainer.appendChild(bookElement);
