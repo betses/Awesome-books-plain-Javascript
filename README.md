@@ -2,6 +2,8 @@
 
 # AwesomeBooks
 
+# AwesomBook Screenshot 
+![](./screenshot.png)
 
 ## Built With
 
@@ -11,6 +13,8 @@
 ## Getting Started
 
 To get a local copy up and running follow these simple example steps.
+
+## [LiveDemo](https://betses.github.io/Awesome-books-plain-Javascript/)
 
 ### Prerequisites
   - Install Node.js
