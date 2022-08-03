@@ -29,6 +29,12 @@ nav {
   display: flex;
 }
 
+.title a {
+  color: white;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
 .nav-ul li a {
   display: block;
   color: white;
@@ -40,6 +46,10 @@ nav {
   border-right: 1px solid #bbb;
 }
 
+.contact-detail li {
+  font-size: 18px;
+}
+
 .nav-ul li:last-child {
   border-right: none;
 }
@@ -48,18 +58,11 @@ nav {
   background-color: #111;
 }
 
-.title a {
-  color: white;
-  padding: 14px 16px;
-  text-decoration: none;
-}
-
 .title {
   margin-left: 15px;
   display: flex;
   align-items: center;
 }
-
 
 .body-container {
   width: 100%;
@@ -75,6 +78,7 @@ nav {
   flex-direction: column;
   gap: 10px;
   width: 50%;
+
   /* padding: 20px; */
   margin: 30px 0 10% 0;
   border-radius: 10px;
@@ -96,12 +100,17 @@ nav {
 }
 
 .odd-book {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
   gap: 20px;
   justify-content: space-between;
-  background-color: #F3F4F6;
+  background-color: #f3f4f6;
   padding: 20px;
   align-items: center;
+}
+
+footer p {
+  margin: 10px 0 10px 25px;
 }
 
 .odd-book p {
@@ -110,7 +119,8 @@ nav {
 }
 
 .book {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
   gap: 20px;
   justify-content: space-between;
   padding: 20px;
@@ -122,8 +132,12 @@ nav {
   font-size: 17px;
 }
 
-.delete {
+.remove-button {
   display: flex;
+  justify-content: end;
+}
+
+.delete {
   justify-content: end;
   padding: 10px 30px;
 }
@@ -149,7 +163,6 @@ form {
   color: white;
   border-radius: 5px;
   border: none;
-
 }
 
 .empty {
@@ -192,10 +205,6 @@ form {
   gap: 10px;
 }
 
-.contact-detail li {
-  font-size: 18px;
-}
-
 footer {
   padding: 5px;
   border: 1px solid black;
@@ -203,11 +212,6 @@ footer {
   background-color: #333;
   position: fixed;
   width: 100%;
-
-}
-
-footer p {
-  margin: 10px 0 10px 25px;
 }
 
 #add-section {
@@ -221,9 +225,10 @@ footer p {
 .timestamp {
   font-size: 12px;
   color: #777;
+  text-align: center;
 }
-@media (max-width: 767px) {
 
+@media (max-width: 767px) {
   nav {
     display: flex;
     background-color: #333;
@@ -231,17 +236,16 @@ footer p {
     font-size: 15px;
   }
 
+  .title a {
+    color: white;
+    padding: 14px 0;
+    text-decoration: none;
+  }
+
   .nav-ul li a {
     display: block;
     color: white;
     padding: 11px 7px;
-    text-decoration: none;
-    padding: 18px;
-  }
-
-  .title a {
-    color: white;
-    padding: 14px 0;
     text-decoration: none;
   }
 

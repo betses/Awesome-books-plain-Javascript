@@ -109,7 +109,9 @@ class Book {
       bookElement.innerHTML = `
           <p>"${book.title}" by ${book.author}</p>
           <p class="timestamp">${timeStamp()}</p>
-          <button data-remove=${index} class='delete'>Remove</button>
+          <div class="remove-button">
+            <button data-remove=${index} class='delete'>Remove</button>
+          </div>
         `;
       bookContainer.appendChild(bookElement);
 
