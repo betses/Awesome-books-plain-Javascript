@@ -216,7 +216,6 @@ footer p {
   display: none;
 }
 
-
 @media (max-width: 767px) {
 
   nav {
@@ -296,5 +295,4 @@ footer p {
     padding: 30px;
     text-align: center;
   }
-
 }
