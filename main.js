@@ -150,7 +150,7 @@ AddBookForm.addEventListener('submit', (e) => {
     }, 5000);
     setTimeout(() => {
       formAdd.innerHTML = '';
-    }, 9000);
+    }, 6000);
     bookTitle.value = '';
     bookTitle.focus();
     bookAuthor.value = '';
