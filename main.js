@@ -58,7 +58,11 @@ class Collections {
   }
 
   getBooks() {
-    return this.collections;
+    const reversed = [];
+    for (let i = this.collections.length - 1; i >= 0; i -= 1) {
+      reversed.push(this.collections[i]);
+    }
+    return reversed;
   }
 }
 
@@ -68,11 +72,17 @@ class Book {
   constructor(title, author) {
     this.title = title;
     this.author = author;
+    this.timeStamp = Book.timeStamp();
   }
 
   addBook() {
     collections.addBook(this);
     this.render();
+  }
+
+  static timeStamp() {
+    const date = new Date();
+    return date.getMinutes();
   }
 
   render() {
@@ -87,8 +97,18 @@ class Book {
       } else {
         bookElement.classList.add('book');
       }
+      function timeStamp() {
+        let time = '';
+        if (Book.timeStamp() - book.timeStamp < 1) {
+          time = 'Just now';
+        } else {
+          time = `${Book.timeStamp() - book.timeStamp} minutes ago`;
+        }
+        return time;
+      }
       bookElement.innerHTML = `
           <p>"${book.title}" by ${book.author}</p>
+          <p class="timestamp">${timeStamp()}</p>
           <button data-remove=${index} class='delete'>Remove</button>
         `;
       bookContainer.appendChild(bookElement);
