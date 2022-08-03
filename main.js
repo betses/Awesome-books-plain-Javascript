@@ -142,9 +142,13 @@ AddBookForm.addEventListener('submit', (e) => {
     const books = new Book(title, author);
     books.addBook();
     formAdd.innerHTML = `"${title}" was added to your collection`;
+    formAdd.style.animation = 'fadeIn 2s ease-in-out';
+    setTimeout(() => {
+      formAdd.style.animation = 'fadeOut 2s ease-in-out';
+    }, 5000);
     setTimeout(() => {
       formAdd.innerHTML = '';
-    }, 5000);
+    }, 9000);
     bookTitle.value = '';
     bookTitle.focus();
     bookAuthor.value = '';
